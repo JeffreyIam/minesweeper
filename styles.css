@@ -1,0 +1,17 @@
+.cell {
+  width:4em;
+  height:4em;
+}
+.hiddenCell {
+  border:outset;
+}
+.showMine {
+  background-color:red;
+}
+.showMissed {
+  background-color:orange;
+}
+.midTable {
+  margin-left:auto;
+  margin-right:auto;
+}

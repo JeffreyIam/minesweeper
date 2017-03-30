@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h2 class="text-center">MineSweeper<button ng-class="$ctrl.smiley()" ng-click="$ctrl.start()"></button></h2>
+      <table class="midTable" oncontextmenu="return false">
+        <tbody>
+          <tr ng-repeat="row in $ctrl.state track by $index">
+            <td ng-repeat="cell in row track by $index">
+              <button ng-class="$ctrl.cellView(cell)" ng-mousedown="$ctrl.generalClick($event, $parent.$index, $index)">{{$ctrl.cellTile(cell, $parent.$index, $index)}}</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div>
+    <h4 class="text-center">{{$ctrl.status}}</h4>
+  </div>
+</div>
