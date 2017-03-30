@@ -8,7 +8,7 @@
       templateUrl: 'minesweeper.html'
     })
 
-  function mineController ($scope, $uibModal) {
+  function mineController ($scope) {
     var $ctrl = this
 
     $ctrl.$onInit = function () {
