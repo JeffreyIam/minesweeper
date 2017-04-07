@@ -2,7 +2,7 @@
   'use strict'
 
   angular
-    .module('app', ['ui.bootstrap'])
+    .module('app', [])
     .component('minesweeper', {
       controller: mineController,
       templateUrl: 'minesweeper.html'
@@ -123,15 +123,19 @@
       return $ctrl.state[row][col].value === 0 ||
              $ctrl.state[row][col].value === 2 ||
              $ctrl.state[row][col].value === 4
+             // need 4 because it will increment everything I didn't click on when the map is revealed instead of just nearby bombs i.e. everything I didn't click on would be counted as a bomb
     }
 
     $ctrl.showTile = function (row, col) {
         // if out of bounds, return
+      console.log(row, col)
       if (row < 0 || row >= $ctrl.side || col < 0 || col >= $ctrl.side) {
+        console.log('returned ' + row + col)
         return
       }
         // if cell is upopened and empty, show empty clicked cell and check around
       if ($ctrl.state[row][col].value === 0) {
+        console.log('is empty', row, col)
         $ctrl.state[row][col].value = 2
         // if no bomb close by then show empty cells and keep checking around
         if ($ctrl.noBomb(row - 1, col - 1) &&
@@ -158,7 +162,7 @@
     $ctrl.start = function () {
       $ctrl.status = 'Game in Progress'
       for (var i = 0; i < $ctrl.side; i++) {
-        $ctrl.state[i] = new Array($ctrl.side)
+        $ctrl.state[i] = [new Array($ctrl.side)]
         for (var j = 0; j < $ctrl.side; j++) {
           $ctrl.state[i][j] = {
             value: 0,
